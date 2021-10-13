@@ -7,7 +7,7 @@ type Class @model{
 
 type Category @model{
   	id: ID!
-  	classId : ID!
+  	classId: ID!
   	name: String!
   	shortCode: String!
   	description: String
@@ -23,22 +23,22 @@ type Unit @model {
 }
 
 type User @model {
-	id : ID!
-	type : String!
-	name : String!
-	shortName : String
-	credit : Boolean
-	creditLimit : Float
-	active : Boolean
-	group : String
-	discount : Float
-	companyName : String
+	id: ID!
+	type: String!
+	name: String!
+	shortName: String
+	credit: Boolean
+	creditLimit: Float
+	active: Boolean
+	group: String
+	discount: Float
+	companyName: String
 }
 
 type Raw @model{
  	id: ID!
  	categoryId : ID!
- 	unitId : ID!
+ 	unitId: ID!
  	name: String!
  	shortCode: String!
  	description: String
@@ -50,12 +50,12 @@ type Raw @model{
 	sale2: Float
  	sale3: Float
  	unit: Unit @connection(fields:["unitId"])
-  	minQty : Float
-	minQtyUnit : Unit @connection(fields:["unitId"])
-	maxQty : Float
-	maxQtyUnit : Unit @connection(fields:["unitId"])
-	currQty : Float
-	currQtyUnit : Unit @connection(fields:["unitId"])
+  	minQty: Float
+	minQtyUnit: Unit @connection(fields:["unitId"])
+	maxQty: Float
+	maxQtyUnit: Unit @connection(fields:["unitId"])
+	currQty: Float
+	currQtyUnit: Unit @connection(fields:["unitId"])
 }
 
 type ProductItem @model
@@ -63,15 +63,16 @@ type ProductItem @model
 	id: ID!
 	productId : ID!
 	product: Product @connection(fields:["productId"])
-	qty : Int
+	qty: Int
 	qtyUnit: Unit @connection(fields:["unitId"])
 	remark: String
 
 }
+
 type Product @model {
-	id : ID!
+	id: ID!
 	categoryId: ID!
-	unitId : ID!
+	unitId: ID!
 	name: String!
 	shortCode: String!
 	description: String
@@ -82,18 +83,16 @@ type Product @model {
 	sale1: Float
 	sale2: Float
  	sale3: Float
- 	minQty : Float
-	minQtyUnit : Unit @connection(fields:["unitId"])
-	maxQty : Float
-	maxQtyUnit : Unit @connection(fields:["unitId"])
-	currQty : Float
-	currQtyUnit : Unit @connection(fields:["unitId"])
-	createdAt : String
-	updatedAt : String
-	productItems : [ProductItem] @conection(keyName: "byProductId",fields:["id"])
+ 	minQty: Float
+	minQtyUnit: Unit @connection(fields:["unitId"])
+	maxQty: Float
+	maxQtyUnit: Unit @connection(fields:["unitId"])
+	currQty: Float
+	currQtyUnit: Unit @connection(fields:["unitId"])
+	createdAt: String
+	updatedAt: String
+	productItems: [ProductItem] @conection(keyName: "byProductId",fields:["id"])
 }
-
-
 
 type OrderItem @model
 @key(name: "byOrderId", fields: ["orderId"]){
@@ -108,17 +107,17 @@ type OrderItem @model
 }
 
 type Order @model {
-	id : ID!
+	id: ID!
 	userId: ID!
-	type : String
-	date : String
+	type: String
+	date: String
 	invoiceNo: String
-	user : User @connection(fields:["userId"])
-	refOrderId : String
+	user: User @connection(fields:["userId"])
+	refOrderId: String
 	orderItems: [OrderItem] @connection(keyName: "byOrderId", fields: ["id"])
-	total : Float
+	total: Float
 	subtotal: Float
-	tax : Float
-	createdAt : String
-	updatedAt : String
+	tax: Float
+	createdAt: String
+	updatedAt: String
 }
