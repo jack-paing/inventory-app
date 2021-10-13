@@ -61,7 +61,8 @@ type Raw @model{
 type ProductItem @model
 @key(name: "byProductId", fields: ["prodcutId"]){
 	id: ID!
-	productId : ID!
+	productId: ID!
+	unitId: ID!
 	product: Product @connection(fields:["productId"])
 	qty: Int
 	qtyUnit: Unit @connection(fields:["unitId"])
@@ -98,10 +99,10 @@ type OrderItem @model
 @key(name: "byOrderId", fields: ["orderId"]){
 	id: ID!
 	orderId: ID!
-	unitId : ID!
+	unitId: ID!
 	order: Order @connection(fields: ["orderId"])
 	product: Product @connection(fields: ["productId"])
-	qty : Int
+	qty: Int
 	qtyUnit: Unit @connection(fields:["unitId"])
 	remark: String
 }
